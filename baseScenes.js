@@ -9,12 +9,7 @@ taxiScene.enter(async ctx => {
 taxiScene.leave(async ctx => {
     await ctx.reply('Thank you')
 })
-/*
-taxiScene.on('/(\+\d{11,11}$)/', async ctx => {
-    ctx.session.phone = ctx.message.text
-    await ctx.reply('Now please send us your location')
-})
-*/
+
 taxiScene.on('text', async ctx => {
     if (ctx.message.entities[0].type === "phone_number") {
         ctx.session.number = ctx.message.text
@@ -25,7 +20,7 @@ taxiScene.on('text', async ctx => {
 })
 
 taxiScene.on('location', async ctx => {
-    const CHAT = "-1001817249365"
+    const CHAT = "-1001000000000"
     const USER = ctx.message.from.first_name
     await ctx.telegram.sendLocation(CHAT, ctx.message.location.latitude, ctx.message.location.longitude)
     await ctx.telegram.sendMessage(CHAT,`User phone number: ${ctx.session.number}\nUser name ${USER}\nTAXI`)
@@ -41,12 +36,7 @@ deliveryScene.enter(async ctx => {
 deliveryScene.leave(async ctx => {
     await ctx.reply('Thank you')
 })
-/*
-deliveryScene.on('/(\+\d{11,11}$)/', async ctx => {
-    ctx.session.phone = ctx.message.text
-    await ctx.reply('Now please send us your location')
-})
-*/
+
 deliveryScene.on('text', async ctx => {
     if (ctx.message.entities[0].type === "phone_number") {
         ctx.session.number = ctx.message.text
@@ -57,7 +47,7 @@ deliveryScene.on('text', async ctx => {
 })
 
 deliveryScene.on('location', async ctx => {
-    const CHAT = "-1001817249365"
+    const CHAT = "-1001222222222"
     const USER = ctx.message.from.first_name
     await ctx.telegram.sendLocation(CHAT, ctx.message.location.latitude, ctx.message.location.longitude)
     await ctx.telegram.sendMessage(CHAT,`User phone number: ${ctx.session.number}\nUser name ${USER}\nDELIVERY`)
