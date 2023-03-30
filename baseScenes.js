@@ -11,7 +11,7 @@ taxiScene.leave(async ctx => {
 })
 
 taxiScene.on('text', async ctx => {
-    if (ctx.message.entities[0].type === "phone_number") {
+    if (ctx.message.entities && ctx.message.entities[0].type === "phone_number") {
         ctx.session.number = ctx.message.text
         await ctx.reply('Now please send your location')
     } else {
@@ -38,7 +38,7 @@ deliveryScene.leave(async ctx => {
 })
 
 deliveryScene.on('text', async ctx => {
-    if (ctx.message.entities[0].type === "phone_number") {
+    if (ctx.message.entities && ctx.message.entities[0].type === "phone_number") {
         ctx.session.number = ctx.message.text
         await ctx.reply('Now please send your location')
     } else {
